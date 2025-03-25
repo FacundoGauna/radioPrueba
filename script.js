@@ -12,7 +12,7 @@ const stations = [
 let currentStation = null;
 let audioUnlocked = false; // Bandera para verificar si el audio está desbloqueado
 
-// 🔊 Botón para desbloquear el audio
+// Botón para desbloquear el audio (Style)
 document.addEventListener("DOMContentLoaded", function () {
     const enableButton = document.createElement("button");
     enableButton.innerText = "Activar Sonido 🔊";
