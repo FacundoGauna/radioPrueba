@@ -10,56 +10,49 @@ const stations = [
 ];
 
 let currentStation = null;
-let audioUnlocked = false; // Bandera para verificar si el audio está desbloqueado
+let audioUnlocked = false;
 
-// Botón para desbloquear el audio (Style)
-document.addEventListener("DOMContentLoaded", function () {
-    const enableButton = document.createElement("button");
-    enableButton.innerText = "Activar Sonido 🔊";
-    enableButton.style.position = "absolute";
-    enableButton.style.top = "10px";
-    enableButton.style.left = "50%";
-    enableButton.style.transform = "translateX(-50%)";
-    enableButton.style.padding = "10px";
-    enableButton.style.fontSize = "16px";
-    enableButton.style.background = "#ff4444";
-    enableButton.style.color = "white";
-    enableButton.style.border = "none";
-    enableButton.style.borderRadius = "5px";
-    enableButton.style.cursor = "pointer";
-    document.body.appendChild(enableButton);
+// Crea un AudioContext para desbloquear el sonido en móviles
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const staticSource = audioContext.createMediaElementSource(staticSound);
+staticSource.connect(audioContext.destination);
 
-    // Evento de clic para desbloquear el audio
-    enableButton.addEventListener("click", function () {
+// Botón para desbloquear el audio
+document.getElementById("enableSound").addEventListener("click", function () {
+    audioContext.resume().then(() => {
         staticSound.play().then(() => {
             staticSound.pause();
             staticSound.currentTime = 0;
-            stations.forEach(station => {
-                station.play().then(() => {
-                    station.pause();
-                    station.currentTime = 0;
-                }).catch(error => console.log("Error desbloqueando estación:", error));
-            });
-            audioUnlocked = true; // Ahora el audio está desbloqueado
-            enableButton.remove(); // Eliminar botón después de la activación
-        }).catch(error => console.log("Error desbloqueando audio:", error));
+        }).catch(error => console.log("Error desbloqueando estática:", error));
+
+        stations.forEach(station => {
+            station.play().then(() => {
+                station.pause();
+                station.currentTime = 0;
+            }).catch(error => console.log("Error desbloqueando estación:", error));
+        });
+
+        audioUnlocked = true;
+        document.getElementById("enableSound").remove();
     });
 });
 
 // Manejo del dial con sonido de estática
 dial.addEventListener("input", function () {
-    if (!audioUnlocked) return; // No reproducir si el usuario no activó el sonido
+    if (!audioUnlocked) return;
 
     let stationIndex = parseInt(dial.value);
 
-    // Reproducir estática
+    // Reproducir estática inmediatamente
     staticSound.currentTime = 0;
+    staticSound.volume = 0.5;
+    staticSound.loop = false;
     staticSound.play().catch(error => console.log("Error al reproducir estática:", error));
 
-    // Esperar un poco para simular la sintonización antes de cambiar de estación
+    // Esperar un poco antes de cambiar de estación
     setTimeout(() => {
         staticSound.pause();
-        staticSound.currentTime = 0; 
+        staticSound.currentTime = 0;
 
         // Pausar todas las estaciones antes de iniciar la nueva
         stations.forEach(station => station.pause());
@@ -68,5 +61,5 @@ dial.addEventListener("input", function () {
         stations[stationIndex].play().catch(error => console.log("Error al reproducir estación:", error));
         currentStation = stations[stationIndex];
 
-    }, 200); // Retraso para efecto de sintonización
+    }, 300);
 });
