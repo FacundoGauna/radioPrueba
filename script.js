@@ -46,25 +46,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// 🎛️ Manejo del dial con sonido de estática
+// Manejo del dial con sonido de estática
 dial.addEventListener("input", function () {
     if (!audioUnlocked) return; // No reproducir si el usuario no activó el sonido
 
     let stationIndex = parseInt(dial.value);
 
-    // 🔊 Reproducir estática
+    // Reproducir estática
     staticSound.currentTime = 0;
     staticSound.play().catch(error => console.log("Error al reproducir estática:", error));
 
-    // ⏳ Esperar un poco para simular la sintonización antes de cambiar de estación
+    // Esperar un poco para simular la sintonización antes de cambiar de estación
     setTimeout(() => {
         staticSound.pause();
         staticSound.currentTime = 0; 
 
-        // 🔇 Pausar todas las estaciones antes de iniciar la nueva
+        // Pausar todas las estaciones antes de iniciar la nueva
         stations.forEach(station => station.pause());
 
-        // ▶️ Reproducir la nueva estación
+        // Reproducir la nueva estación
         stations[stationIndex].play().catch(error => console.log("Error al reproducir estación:", error));
         currentStation = stations[stationIndex];
 
