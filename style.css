@@ -1,4 +1,4 @@
-/* General */
+/* GENERAL */
 body {
     display: flex;
     flex-direction: column;
@@ -16,26 +16,28 @@ h1 {
     color: white;
 }
 
+/* Contenedor principal con tamaño adaptable */
 .fondo {
-position: relative;
-width: 800px;
-height: 550px;
-background: url("assets/mesaBG.avif");
-background-size: 800px 550px;
-border-radius: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
+    position: relative;
+    width: 90vw; /* Se adapta al ancho del viewport */
+    max-width: 800px; /* Tamaño máximo para evitar que se vea enorme en pantallas grandes */
+    aspect-ratio: 800 / 550; /* Mantiene la proporción original */
+    background: url("assets/mesaBG.avif");
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Imagen de la radio */
 .radio {
     position: absolute;
     width: 65%;
     height: 70%;
-    margin-top: -3%;
     background: transparent;
-    background: url("assets/vintageRadio.png") no-repeat center center fixed;
-    background-size: 80% 55%;
+    background: url("assets/vintageRadio.png") no-repeat center center;
+    background-size: contain;
     border-radius: 5%;
     display: flex;
     align-items: center;
@@ -43,28 +45,29 @@ justify-content: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Contenedor del dial */
 .dial-container {
     position: absolute;
-    bottom: 70px;
-    width: 53%;
+    bottom: 10%;
+    width: 55%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Rectángulo del dial */
+/* Indicador del dial */
 .dial-indicator {
     position: absolute;
-    top: -20px; /* Posición encima del dial */
-    width: 30px;
-    height: 15px;
+    top: -15px;
+    width: 25px;
+    height: 12px;
     background: url("assets/dial-skin.jpg") no-repeat center center;
     background-size: contain;
     border: 2px solid black;
     border-radius: 4px;
 }
 
-/* Slider */
+/* Estilo del slider */
 #dial {
     width: 100%;
     appearance: none;
@@ -79,14 +82,14 @@ justify-content: center;
     border-radius: 5px;
 }
 
-/* Triángulo negro brillante */
+/* Estilo del thumb (punto de arrastre) */
 #dial::-webkit-slider-thumb {
     appearance: none;
     width: 0;
     height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 20px solid #bd0000; /* Color negro */
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid #bd0000;
     filter: brightness(1.5);
     cursor: pointer;
     margin-top: -8px;
@@ -96,9 +99,9 @@ justify-content: center;
 #dial::-moz-range-thumb {
     width: 0;
     height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 20px solid black;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid black;
     filter: brightness(1.5);
     cursor: pointer;
 }
@@ -107,21 +110,43 @@ h2 {
     color: white;
 }
 
-/* Para moviles */
+/*  ADAPTACIÓN A TELÉFONOS */
 @media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
     .fondo {
-        width: 80vw;
-        heigth: 80vw;
+        width: 95vw; /* Un poco más ancho en móviles */
+        border-radius: 5px;
     }
 
-    
     .radio {
-        width: 100%;
-        height: 100%;
-        margin-top: -10%;
+        width: 85%;
+        height: 65%;
+        background-size: contain;
     }
 
+    .dial-container {
+        width: 70%;
+        bottom: 7%;
+    }
 
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1rem; }
+    .dial-indicator {
+        width: 20px;
+        height: 10px;
+        top: -10px;
+    }
+
+    #dial::-webkit-slider-thumb {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 15px solid #bd0000;
+    }
+
+    #dial::-moz-range-thumb {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 15px solid black;
+    }
 }
