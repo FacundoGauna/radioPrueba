@@ -1,0 +1,107 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: black;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    color: white;
+}
+
+.fondo {
+position: relative;
+width: 800px;
+height: 550px;
+background: url("assets/mesaBG.avif");
+background-size: 800px 550px;
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.radio {
+    position: absolute;
+    width: 65%;
+    height: 70%;
+    margin-top: -3%;
+    background: transparent;
+    background: url("assets/vintageRadio.png") no-repeat center center fixed;
+    background-size: 80% 55%;
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dial-container {
+    position: absolute;
+    bottom: 70px;
+    width: 53%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rectángulo del dial */
+.dial-indicator {
+    position: absolute;
+    top: -20px; /* Posición encima del dial */
+    width: 30px;
+    height: 15px;
+    background: url("assets/dial-skin.jpg") no-repeat center center;
+    background-size: contain;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+/* Slider */
+#dial {
+    width: 100%;
+    appearance: none;
+    background: transparent;
+}
+
+/* Estilo de la pista del slider */
+#dial::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: transparent;
+    border-radius: 5px;
+}
+
+/* Triángulo negro brillante */
+#dial::-webkit-slider-thumb {
+    appearance: none;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid #bd0000; /* Color negro */
+    filter: brightness(1.5);
+    cursor: pointer;
+    margin-top: -8px;
+}
+
+/* Firefox */
+#dial::-moz-range-thumb {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 20px solid black;
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
+h2 {
+    color: white;
+}

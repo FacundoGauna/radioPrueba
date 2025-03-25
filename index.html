@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Interactiva</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Radio Interactiva</h1>
+    <div class="fondo">
+         <div class="radio">
+            <div class="dial-container">
+                <input type="range" id="dial" min="0" max="5" step="1" value="0">
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio de diferentes estaciones -->
+    <audio id="static" src="audio/dialRadio.wav"></audio>
+    <audio id="station0" src="audio/station1.mp3"></audio>
+    <audio id="station1" src="audio/station2.mp3"></audio>
+    <audio id="station2" src="audio/station3.mp3"></audio>
+    <audio id="station3" src="audio/station4.mp3"></audio>
+    <audio id="station4" src="audio/station5.mp3"></audio>
+    <audio id="station5" src="audio/station6.mp3"></audio>
+
+    <h2>Mueve el dial para escuchar las diferentes emisoras</h2>
+    <script src="script.js"></script>
+
+</body>
+</html>
