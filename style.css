@@ -19,7 +19,7 @@ h1 {
 
 button {
     position: absolute;
-    top: 170px;
+    top: 100px;
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 20px;
@@ -128,7 +128,7 @@ button:hover {
 
 h2 {
     font-size: 1.2rem; /* Tamaño aumentado */
-    color: white;
+    color: #c94b4b;
     font-family: 'Courier', 'Courier New', monospace;
 }
 
@@ -139,6 +139,7 @@ h3 {
     margin: 30px; /* Aplica un margen uniforme en todos los lados */
     text-align: center;
     text-align: justify;
+    line-height: 1.5
 }
 
 /*  ADAPTACIÓN A TELÉFONOS */
