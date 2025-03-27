@@ -18,6 +18,10 @@ const staticSource = audioContext.createMediaElementSource(staticSound);
 staticSource.connect(audioContext.destination);
 
 // Botón para desbloquear el audio
+// Agregar la clase para que el botón cambie de color
+document.getElementById("enableSound").classList.add("blinking");
+
+// Agregar el evento al botón (sin cambiar nada de tu código)
 document.getElementById("enableSound").addEventListener("click", function () {
     audioContext.resume().then(() => {
         staticSound.play().then(() => {
@@ -33,9 +37,16 @@ document.getElementById("enableSound").addEventListener("click", function () {
         });
 
         audioUnlocked = true;
-        document.getElementById("enableSound").remove();
+        
+        // Eliminar la clase antes de borrar el botón (para evitar errores)
+        let button = document.getElementById("enableSound");
+        if (button) {
+            button.classList.remove("blinking");
+            button.remove(); // Elimina el botón
+        }
     });
 });
+
 
 // Manejo del dial con sonido de estática
 dial.addEventListener("input", function () {

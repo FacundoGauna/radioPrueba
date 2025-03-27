@@ -8,7 +8,7 @@ body {
     margin: 0;
     background: url("assets/FondoRadio.png");
     font-family: Arial, sans-serif;
-    text-align: cente
+    text-align: center;
 }
 
 h1 {
@@ -17,14 +17,15 @@ h1 {
     font-family: 'Courier', 'Courier New', monospace; /* Fuente retro sin necesidad de importar */
 }
 
+/* Botón */
 button {
     position: absolute;
-    top: 100px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 20px;
     font-size: 16px;
-    background: #ff4444;
+    background: red;
     color: white;
     border: none;
     border-radius: 5px;
@@ -32,10 +33,20 @@ button {
     z-index: 100;
 }
 
-button:hover {
-    background: #cc0000;
+/* Efecto de parpadeo */
+@keyframes blinkColor {
+    0% { background-color: red; }
+    50% { background-color: yellow; }
+    100% { background-color: red; }
 }
 
+.blinking {
+    animation: blinkColor 1s infinite;
+}
+
+button:hover {
+    background: red;
+}
 
 .fondo {
     position: relative;
@@ -127,19 +138,19 @@ button:hover {
 }
 
 h2 {
-    font-size: 1.2rem; /* Tamaño aumentado */
-    color: #c94b4b;
+    font-size: 1.9rem; /* Tamaño aumentado */
+    color: #ff3030;
     font-family: 'Courier', 'Courier New', monospace;
 }
 
 h3 {
-    font-size: 0.8rem; /* Tamaño aumentado */
+    font-size: 0.9rem; /* Tamaño aumentado */
     color: white;
     font-family: 'Courier', 'Courier New', monospace;
     margin: 30px; /* Aplica un margen uniforme en todos los lados */
     text-align: center;
     text-align: justify;
-    line-height: 1.5
+    line-height: 1.5;
 }
 
 /*  ADAPTACIÓN A TELÉFONOS */
@@ -181,5 +192,4 @@ h3 {
         border-right: 8px solid transparent;
         border-bottom: 15px solid black;
     }
-
 }
